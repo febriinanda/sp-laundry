@@ -4,9 +4,7 @@ import com.nanda.laundry.utility.RegistrationNumberGenerator;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Random;
 
 @Entity
 @Table(name = "m_customer")
