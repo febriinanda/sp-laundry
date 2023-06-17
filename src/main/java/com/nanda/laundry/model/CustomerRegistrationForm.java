@@ -11,7 +11,7 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerRegistrationForm {
+public class CustomerRegistrationForm implements PersonalInformationForm{
     private String name;
     private Date birthDate;
     private String address;

@@ -1,5 +1,6 @@
 package com.nanda.laundry.entity;
 
+import com.nanda.laundry.utility.RegistrationNumberGenerator;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -38,13 +39,6 @@ public class Customer {
     }
 
     private void generateRegistrationNumber() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(this.getJoinDate());
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH) + 1;
-        Random random = new Random();
-        int rnd = random.nextInt(999999);
-
-        this.registrationNumber = "#CUST-" + String.format("%04d", year) + '.' + String.format("%02d", month) + '.' + String.format("%06d", rnd);
+        this.registrationNumber = "#CUST-" + RegistrationNumberGenerator.generate(this.getJoinDate());
     }
 }
