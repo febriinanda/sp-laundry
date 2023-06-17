@@ -1,6 +1,7 @@
 package com.nanda.laundry.entity;
 
-import com.nanda.laundry.model.CustomerRegistrationForm;
+import com.github.javafaker.Faker;
+import com.nanda.laundry.model.PersonalInformationForm;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,11 +29,19 @@ public class Person {
     @Column(unique = true)
     private String mobilePhone;
 
-    public Person(CustomerRegistrationForm form) {
+    public Person(PersonalInformationForm form) {
         this.name = form.getName();
         this.birthDate = form.getBirthDate();
         this.address = form.getAddress();
         this.gender = form.getGender();
         this.mobilePhone = form.getMobilePhone();
+    }
+
+    public Person(Faker faker) {
+        this.name = faker.name().fullName();
+        this.birthDate = faker.date().birthday(15,70);
+        this.address = faker.address().fullAddress();
+        this.gender = faker.demographic().sex();
+        this.mobilePhone = faker.phoneNumber().cellPhone();
     }
 }
